@@ -83,7 +83,7 @@ class _AnimatedRadialChartExampleState
     TextStyle _labelStyle = Theme
         .of(context)
         .textTheme
-        .headline1!
+        .titleLarge!
         .merge(new TextStyle(color: labelColor));
 
     return new Scaffold(
@@ -107,19 +107,19 @@ class _AnimatedRadialChartExampleState
           new Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              new RaisedButton(
+              new ElevatedButton(
                 onPressed: _decrement,
                 child: const Icon(Icons.remove),
-                shape: const CircleBorder(),
-                color: Colors.red[200],
-                textColor: Colors.white,
+                // shape: const CircleBorder(),
+                // color: Colors.red[200],
+                // textColor: Colors.white,
               ),
-              new RaisedButton(
+              new ElevatedButton(
                 onPressed: _increment,
                 child: const Icon(Icons.add),
-                shape: const CircleBorder(),
-                color: Colors.blue[200],
-                textColor: Colors.white,
+                // shape: const CircleBorder(),
+                // color: Colors.blue[200],
+                // textColor: Colors.white,
               ),
             ],
           ),
