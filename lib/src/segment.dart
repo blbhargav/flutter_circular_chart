@@ -4,30 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:circular_chart_flutter/src/tween.dart';
 
 class CircularChartSegment extends MergeTweenable<CircularChartSegment> {
-  CircularChartSegment(this.rank, this.sweepAngle, this.color);
+  CircularChartSegment(this.rank, this.sweepAngle, this.color, {this.strokeWidth = 15.0}); // ✅ Added strokeWidth
 
   final int rank;
   final double? sweepAngle;
   final Color? color;
+  final double strokeWidth; // ✅ New Property
 
   @override
-  CircularChartSegment get empty => new CircularChartSegment(rank, 0.0, color);
+  CircularChartSegment get empty => CircularChartSegment(rank, 0.0, color, strokeWidth: strokeWidth);
 
   @override
   bool operator <(CircularChartSegment other) => rank < other.rank;
 
   @override
   Tween<CircularChartSegment> tweenTo(CircularChartSegment other) =>
-      new CircularChartSegmentTween(this, other);
+      CircularChartSegmentTween(this, other);
 
   static CircularChartSegment lerp(
       CircularChartSegment begin, CircularChartSegment end, double t) {
     assert(begin.rank == end.rank);
 
-    return new CircularChartSegment(
+    return CircularChartSegment(
       begin.rank,
       lerpDouble(begin.sweepAngle, end.sweepAngle, t),
       Color.lerp(begin.color, end.color, t),
+      strokeWidth: lerpDouble(begin.strokeWidth, end.strokeWidth, t) ?? 15.0, // ✅ Interpolate strokeWidth
     );
   }
 }

@@ -113,9 +113,7 @@ class AnimatedCircularChart extends StatefulWidget {
   /// AnimatedCircularChartState animatedCircularChart = AnimatedCircularChart.of(context);
   /// ```
   static AnimatedCircularChartState? of(BuildContext context,
-      {bool nullOk: false}) {
-    assert(context != null);
-    assert(nullOk != null);
+      {bool nullOk = false}) {
 
     final AnimatedCircularChartState? result = context
         .findAncestorStateOfType<AnimatedCircularChartState>();
